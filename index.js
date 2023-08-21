@@ -11,7 +11,7 @@ app.use(express.json());
 app.use("/api",routes)
  
 app.post("/chat", async (req, res) => {
-  const { prompt } = req.body;
+ const { prompt } = req.body;
      const options ={
       method:"POST",
       headers:{
