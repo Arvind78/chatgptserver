@@ -4,7 +4,7 @@ const dotenv = require("dotenv").config();
 const cors = require("cors");
 const createConnection = require("./config/dbConnection");
 const routes = require("./router/routes");
-const { Configuration, OpenAIApi } = require("openai");
+ 
 const app = express();
 app.use(cors());
 app.use(express.json());
