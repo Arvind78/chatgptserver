@@ -60,15 +60,12 @@ const forgetPassword = async (req,res)=>{
    }
 }
 
-const Chat = async(req,req)=>{
+const Chat = async(req,res)=>{
  res.send(req.body)
 
 }
 
-module.exports ={Signup,Login,forgetPassword}
-
-
-
+module.exports ={Signup,Login,forgetPassword,Chat}
 
 
 
