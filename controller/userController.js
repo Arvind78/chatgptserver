@@ -90,10 +90,7 @@ const Chat =  async(req,res)=>{
     
  } catch (error) {
    return res.status(400).json({
-     success: false,
-     error: error.response
-       ? error.response.data
-       : "There was an issue on the server",
+   error
    });
  }
 
