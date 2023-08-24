@@ -60,7 +60,46 @@ const forgetPassword = async (req,res)=>{
    }
 }
 
-module.exports ={Signup,Login,forgetPassword}
+const Chat =  async(req,res)=>{
+    const { prompt } = req.body;
+    const options ={
+     method:"POST",
+     headers:{
+       "Authorization":`Bearer ${process.env.OPENAI_API_KEY}`,
+       "Content-Type": "application/json"
+     },
+     body:JSON.stringify({
+       "model": "gpt-3.5-turbo",
+       "messages": [
+         {
+           "role": "system",
+           "content": "You are a helpful assistant."
+         },
+         {
+           "role": "user",
+           "content": `${prompt}`
+         }
+       ]
+   
+     })
+    }
+ try {
+   const response= await fetch("https://api.openai.com/v1/chat/completions",options)
+   const result = await response.json();
+   res.send({result:result.choices[0].message.content}) 
+    
+ } catch (error) {
+   return res.status(400).json({
+     success: false,
+     error: error.response
+       ? error.response.data
+       : "There was an issue on the server",
+   });
+ }
+
+}
+
+module.exports ={Signup,Login,forgetPassword,Chat}
 
 
 
