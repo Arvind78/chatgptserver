@@ -2,6 +2,7 @@ const { default: mongoose } = require("mongoose");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const userModel = require("../model/UserModel");
+const fetch = require("node-fetch");
 
 const Signup = async (req, res) => {
   try {
