@@ -104,7 +104,7 @@ const Chat = async (req, res) => {
   try {
     const response = await fetch("https://api.openai.com/v1/chat/completions",option);
     const result = await response.json();
-    res.send(result) ;
+    res.send({result:result.choices[0].message.content}) ;
   } catch (error) {
    res.send(error.message )
   }
